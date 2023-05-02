@@ -1,4 +1,6 @@
 using FreeCourse.Services.Order.Infrastructure;
+using FreeCourse.Shared.Services;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -28,6 +30,7 @@ namespace FreeCourse.Services.Order.API
         public void ConfigureServices(IServiceCollection services)
         {
 
+            services.AddMediatR(typeof(Application.Handlers.CreateOrderCommandHandler).Assembly);
 
             services.AddDbContext<OrderDbContext>(opt =>
             {
@@ -36,6 +39,8 @@ namespace FreeCourse.Services.Order.API
                     configure.MigrationsAssembly("FreeCourse.Services.Order.Infrastructure");
                 });
             });
+            services.AddScoped<ISharedIdentityService,SharedIdentityService>();
+            services.AddHttpContextAccessor();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
