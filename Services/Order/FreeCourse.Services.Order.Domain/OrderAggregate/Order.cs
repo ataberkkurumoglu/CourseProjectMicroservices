@@ -14,9 +14,9 @@ namespace FreeCourse.Services.Order.Domain.OrderAggregate
     // -- BACKING FIELD 
     public class Order :Entity,IAggregateRoot
     {
-        public DateTime CreatedDate { get; set; }
-        public Address Address { get; set; }
-        public string BuyerId { get; set; }
+        public DateTime CreatedDate { get;private set; }
+        public Address Address { get; private set; }
+        public string BuyerId { get; private set; }
         private readonly List<OrderItem> _orderItems;
         public IReadOnlyCollection<OrderItem> OrderItems => _orderItems;
 
