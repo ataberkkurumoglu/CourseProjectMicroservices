@@ -20,7 +20,7 @@ namespace FreeCourse.Services.Order.Domain.OrderAggregate
         private readonly List<OrderItem> _orderItems;
         public IReadOnlyCollection<OrderItem> OrderItems => _orderItems;
 
-
+        public Order() { }
         public Order( Address address, string buyerId)
         {
             CreatedDate = DateTime.Now;
