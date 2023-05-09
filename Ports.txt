@@ -2,3 +2,4 @@ Services
 -catalogAPI => 5011
 -orderAIPI => 5012
 identityserver => 5001
+gateway => 5000
